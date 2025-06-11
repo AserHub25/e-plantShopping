@@ -45,10 +45,14 @@ const calculateTotalAmount = () => {
   };
 
   const handleRemove = (item) => {
+    dispatch(removeItem(item.name));
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    const numCost = parseFloat(item.cost.toString().replace(/[^\d.]/g, ''));
+
+    return (numericCost * item.quantity).toFixed(2);
   };
 
   const handleCheckoutShopping = (e) => {
