@@ -256,17 +256,18 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
     const handleAddToCart = (product) => {
-        dispatchEvent(addItem(product));
+        dispatch(addItem(product));
 
         setAddedToCart((prevState) => ({
             ...prevState,
             [product.name]: true,
-        }
-
-        )
-
-        );
+        }));
     };
+    const calculateTotalQuantity = () => {
+        return CartItems ? CartItems.reduce((total, item) =>
+                total + item.quantity, 0) : 0;
+         };
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
